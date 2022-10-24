@@ -4,8 +4,8 @@ const router = express.Router();
 
 const PATH_ROUTES = __dirname;
 
-const removeExtension = (filename) => {
-  return filename.split(".").shift();
+const removeExtension = (fileName) => {
+  return fileName.split(".").shift();
 };
 
 const a = fs.readdirSync(PATH_ROUTES).filter((file) => {
