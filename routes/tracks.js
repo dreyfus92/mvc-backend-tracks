@@ -1,6 +1,6 @@
 const express = require("express");
-const { getItems, getItem, createItem } = require("../controllers/tracks");
 const router = express.Router();
+const { getItems, getItem, createItem } = require("../controllers/tracks");
 
 //TODO http://localhost/tracks GET, POST, DELETE, PUT
 

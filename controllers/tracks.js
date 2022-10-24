@@ -23,10 +23,10 @@ const getItem = (req, res) => {};
  * @param res
  */
 const createItem = async (req, res) => {
-  const itemBody = req.body;
-  console.log(itemBody);
-  //const data = await tracksModel.create(body);
-  res.send({ algo: 1 });
+  const { body } = req;
+  console.log(body);
+  const data = await tracksModel.create(body);
+  res.send({ data });
 };
 
 /**
