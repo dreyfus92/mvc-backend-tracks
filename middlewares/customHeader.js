@@ -1,7 +1,7 @@
 const customHeader = (req, res, next) => {
   try {
     const apiKey = req.headers.api_key;
-    if (apiKey === "leifer-01") {
+    if (apiKey === "api-publica-123") {
       next();
     } else {
       res.status(403);
