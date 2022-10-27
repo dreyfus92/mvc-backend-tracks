@@ -30,15 +30,11 @@ router.get("/:id", validatorGetItem, getItem);
 
 router.post("/", validatorCreateItem, createItem);
 
-module.exports = router;
-
 /**
  * Actualizar un registro
  */
 
 router.put("/:id", validatorGetItem, validatorCreateItem, updateItem);
-
-module.exports = router;
 
 /**
  * Borrar un registro
