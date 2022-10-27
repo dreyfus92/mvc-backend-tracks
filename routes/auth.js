@@ -5,6 +5,6 @@ const router = express.Router();
  * Crear un registro
  */
 
-router.post("/");
+router.post("/login", (req, res));
 
 module.exports = router;
