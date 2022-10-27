@@ -5,6 +5,7 @@ const {
   createItem,
   getItem,
   updateItem,
+  deleteItem,
 } = require("../controllers/tracks");
 const {
   validatorCreateItem,
@@ -32,9 +33,17 @@ router.post("/", validatorCreateItem, createItem);
 module.exports = router;
 
 /**
- * Actualizar un registro un registro
+ * Actualizar un registro
  */
 
 router.put("/:id", validatorGetItem, validatorCreateItem, updateItem);
+
+module.exports = router;
+
+/**
+ * Borrar un registro
+ */
+
+router.delete("/:id", validatorGetItem, deleteItem);
 
 module.exports = router;
