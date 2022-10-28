@@ -3,22 +3,23 @@ const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../utils/handleError");
 
 /**
- * Obtener lista de la base datos!
+ * Get a list of items
  * @param req
  * @param res
  */
 
 const getItems = async (req, res) => {
   try {
+    const user = req.user;
     const data = await tracksModel.find({});
-    res.send({ data });
+    res.send({ data, user });
   } catch (e) {
     handleHttpError(res, "ERROR_GET_ITEMS");
   }
 };
 
 /**
- * Obtener un detalle
+ * Get an item
  * @param req
  * @param res
  */
@@ -35,7 +36,7 @@ const getItem = async (req, res) => {
 };
 
 /**
- * Insertar un registro
+ * Insert an entry
  * @param req
  * @param res
  */
@@ -51,7 +52,7 @@ const createItem = async (req, res) => {
 };
 
 /**
- * Actualizar un registro
+ * Update an entry
  * @param req
  * @param res
  */
@@ -67,7 +68,7 @@ const updateItem = async (req, res) => {
 };
 
 /**
- * Borrar un registro
+ * Delete an entry
  * @param req
  * @param res
  */

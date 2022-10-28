@@ -11,35 +11,49 @@ const {
   validatorCreateItem,
   validatorGetItem,
 } = require("../validators/tracks");
+const { authMiddleware } = require("../middlewares/session");
+const { checkRole } = require("../middlewares/role");
 
 /**
- * List los items
+ * List the items
  */
 
-router.get("/", getItems);
+router.get("/", authMiddleware, getItems);
 
 /**
- * Obtener detalles sobre un item
+ * Obtains details of an item
  */
 
-router.get("/:id", validatorGetItem, getItem);
+router.get("/:id", authMiddleware, validatorGetItem, getItem);
 
 /**
- * Crear un registro
+ * Create a new item
  */
 
-router.post("/", validatorCreateItem, createItem);
+router.post(
+  "/",
+  authMiddleware,
+  checkRole(["admin"]),
+  validatorCreateItem,
+  createItem
+);
 
 /**
- * Actualizar un registro
+ * Updates an item
  */
 
-router.put("/:id", validatorGetItem, validatorCreateItem, updateItem);
+router.put(
+  "/:id",
+  authMiddleware,
+  validatorGetItem,
+  validatorCreateItem,
+  updateItem
+);
 
 /**
  * Borrar un registro
  */
 
-router.delete("/:id", validatorGetItem, deleteItem);
+router.delete("/:id", authMiddleware, validatorGetItem, deleteItem);
 
 module.exports = router;

@@ -1,22 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const { encrypt, compare } = require("../utils/handlePassword");
-const { matchedData } = require("express-validator");
-const { validatorRegister } = require("../validators/auth");
-const { usersModel } = require("../models");
-const { tokenSign } = require("../utils/handleJwt");
-const { loginCtrl } = require("../controllers/auth");
+const { validatorRegister, validatorLogin } = require("../validators/auth");
+const { loginCtrl, registerCtrl } = require("../controllers/auth");
 
 /**
  * Create a user
  */
 
-router.post("/register", validatorRegister, async (req, res) => loginCtrl);
+router.post("/register", validatorRegister, registerCtrl);
 
 /**
- *
+ * Login a user
  */
 
-router.post("/register", validatorRegister, async (req, res) => loginCtrl);
+router.post("/login", validatorLogin, loginCtrl);
 
 module.exports = router;
